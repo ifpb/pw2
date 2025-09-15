@@ -89,9 +89,9 @@ makeRequest('GET', resource)
 
 ### Invest-app (CRUD)
 
-![](/ls/imgs/w3c/fetch-api/invest-app-crud.png)
+![](/pw2/imgs/w3c/fetch-api/invest-app-crud.png)
 
-[Código Fonte](https://github.com/ifpb/ls/tree/main/public/codes/w3c/fetch-api/invest-app/)
+[Código Fonte](https://github.com/ifpb/pw2/tree/main/public/codes/w3c/fetch-api/invest-app/)
 
 <CodeTree src="/codes/w3c/fetch-api/invest-app/" />
 
@@ -111,7 +111,7 @@ export default { create, read, update, remove };
 
 #### Create a investment
 
-![](/ls/imgs/package/supabase-api/post-investment.png)
+![](/pw2/imgs/package/supabase-api/post-investment.png)
 
 ```js title="/codes/w3c/fetch-api/invest-app/js/service/storage.js"
 async function create(resource, data) {
@@ -153,7 +153,7 @@ Storage.create('investments', investment);
 
 #### Read investments
 
-![](/ls/imgs/package/supabase-api/get-investments.png)
+![](/pw2/imgs/package/supabase-api/get-investments.png)
 
 ```js title="/codes/w3c/fetch-api/invest-app/js/service/storage.js"
 async function read(resource, id) {
@@ -184,7 +184,7 @@ Storage.read('investments', 1);
 
 #### Update a investment
 
-![](/ls/imgs/package/supabase-api/patch-investment.png)
+![](/pw2/imgs/package/supabase-api/patch-investment.png)
 
 ```js title="/codes/w3c/fetch-api/invest-app/js/service/storage.js"
 async function update(resource, id, data) {
@@ -217,7 +217,7 @@ Storage.update('investments', 1, { value: 15000 });
 
 #### Delete a investment
 
-![](/ls/imgs/package/supabase-api/delete-investment.png)
+![](/pw2/imgs/package/supabase-api/delete-investment.png)
 
 ```js title="/codes/w3c/fetch-api/invest-app/js/service/storage.js"
 async function remove(resource, id) {

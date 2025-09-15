@@ -8,14 +8,14 @@ import ThemeToggle from './ThemeToggle';
 >
   <section class="px-4 py-2">
     <nav class="flex items-center justify-between">
-      <a class="text-lg font-bold font-heading" href="/ls/">
-        <span class="sm:hidden">Ling. Script</span>
-        <span class="max-sm:hidden">Linguagem de Script</span>
+      <a class="text-lg font-bold font-heading" href="/pw2/">
+        <span class="sm:hidden">Prog. Web 2</span>
+        <span class="max-sm:hidden">Programação para Web 2</span>
       </a>
 
       <div class="flex items-center gap-2">
         <ThemeToggle client:load />
-        <a class="hover:text-gray-500" href="https://github.com/ifpb/ls/">
+        <a class="hover:text-gray-500" href="https://github.com/ifpb/pw2/">
           <Icon name="mdi:github" size={28} class="github-project-link" />
         </a>
         <button
@@ -38,27 +38,27 @@ import ThemeToggle from './ThemeToggle';
 </header>
 
 <script is:inline>
-const theme = (() => {
-  if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-    return localStorage.getItem('theme');
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
   }
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
-  return 'light';
-})();
 
-if (theme === 'light') {
-  document.documentElement.classList.remove('dark');
-} else {
-  document.documentElement.classList.add('dark');
-}
+  window.localStorage.setItem('theme', theme);
 
-window.localStorage.setItem('theme', theme);
-
-document.querySelector('.menu-icon').addEventListener('click', () => {
-  document.querySelector('#default-sidebar').classList.toggle('hidden');
-});
+  document.querySelector('.menu-icon').addEventListener('click', () => {
+    document.querySelector('#default-sidebar').classList.toggle('hidden');
+  });
 </script>
 
 <style is:global>

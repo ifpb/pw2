@@ -30,7 +30,7 @@ const codeName = src?.split('/')?.at(-2);
     </div>
     {
       codeName ? (
-        <a class="font-normal dark:text-[#d1d5db]" href={`/ls${src}`}>
+        <a class="font-normal dark:text-[#d1d5db]" href={`/pw2${src}`}>
           {linkName ?? codeName}
         </a>
       ) : (
@@ -43,7 +43,7 @@ const codeName = src?.split('/')?.at(-2);
     {
       src && isShowIframe ? (
         <Iframe
-          src={`/ls${src}`}
+          src={`/pw2${src}`}
           srcDoc={readFile(src)}
           height={height}
           client:load

@@ -24,7 +24,7 @@ import CodePreview from '../../../../components/CodePreview.astro';
 
 ![](/imgs/api/rest/viacep-get.png)
 
-[Código Fonte](https://github.com/ifpb/ls/tree/main/public/codes/api/rest/) (Requisição | [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)):
+[Código Fonte](https://github.com/ifpb/pw2/tree/main/public/codes/api/rest/) (Requisição | [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)):
 
 <CodePreview src="/codes/api/rest/viacep.http" />
 
@@ -39,7 +39,7 @@ $ curl https://viacep.com.br/ws/58015430/json/
 - Exemplos
   - [{'https://api.github.com/users/luizchaves'}](https://api.github.com/users/luizchaves)
   - [{'https://api.github.com/orgs/ifpb/repos'}](https://api.github.com/orgs/ifpb/repos)
-  - [{'https://api.github.com/repos/ifpb/ls'}](https://api.github.com/repos/ifpb/ls)
+  - [{'https://api.github.com/repos/ifpb/pw2'}](https://api.github.com/repos/ifpb/pw2)
   {/* - [Exemplo](https://ifpb.github.io/challenges/web/front-end/js/github-profile-comparator/) */}
 - Token
   - [Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
@@ -51,16 +51,16 @@ $ curl https://viacep.com.br/ws/58015430/json/
 
 ### Rotas
 
-[Código Fonte (Requisição | Rest Client)](https://github.com/ifpb/ls/tree/main/public/codes/api/rest/)
+[Código Fonte (Requisição | Rest Client)](https://github.com/ifpb/pw2/tree/main/public/codes/api/rest/)
 
 | Método | Caminho                                | Status | Resposta                              |
 | ------ | -------------------------------------- | ------ | --------------------------------------------- |
 | POST   | `/user/repos`                          | `201`  | Cria um novo repositório                      |
 | GET    | `/users/luizchaves/repos`              | `200`  | Retorna todos os repositórios                 |
 | GET    | `/users/luizchaves/repos?type=private` | `200`  | Retorna todos os repositórios privados        |
-| GET    | `/repos/luizchaves/ls`                 | `200`  | Retorna o repositório com nome luizchaves/ls  |
-| PATCH  | `/repos/luizchaves/ls`                 | `200`  | Atualiza o repositório com nome luizchaves/ls |
-| DELETE | `/repos/luizchaves/ls`                 | `204`  | Exclui o repositório com nome luizchaves/ls   |
+| GET    | `/repos/luizchaves/pw2`                 | `200`  | Retorna o repositório com nome luizchaves/pw2  |
+| PATCH  | `/repos/luizchaves/pw2`                 | `200`  | Atualiza o repositório com nome luizchaves/pw2 |
+| DELETE | `/repos/luizchaves/pw2`                 | `204`  | Exclui o repositório com nome luizchaves/pw2   |
 
 [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
   - Respostas de informação (100-199)
@@ -83,7 +83,7 @@ Exemplos de Códigos
 
 ### Create a repository
 
-![](/ls/imgs/api/rest/github-post-repository.png)
+![](/pw2/imgs/api/rest/github-post-repository.png)
 
 [GitHub - REST API - Create a repository for the authenticated user](https://docs.github.com/en/free-pro-team@latest/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user)
 
@@ -124,7 +124,7 @@ $ curl -L \
 
 ### Read repositories
 
-![](/ls/imgs/api/rest/github-get-repositories.png)
+![](/pw2/imgs/api/rest/github-get-repositories.png)
 
 [GitHub - REST API - List repositories for a user](https://docs.github.com/en/free-pro-team@latest/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user)
 
@@ -151,7 +151,7 @@ $ curl -L \
 
 ### Read a repository (name)
 
-![](/ls/imgs/api/rest/github-get-repository.png)
+![](/pw2/imgs/api/rest/github-get-repository.png)
 
 [GitHub - REST API - Get a repository](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository)
 
@@ -180,7 +180,7 @@ $ curl -L \
 
 ### Update a repository
 
-![](/ls/imgs/api/rest/github-patch-repository.png)
+![](/pw2/imgs/api/rest/github-patch-repository.png)
 
 [GitHub - REST API - Update a repository](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository)
 
@@ -219,7 +219,7 @@ $ curl -L \
 
 ### Delete a repository
 
-![](/ls/imgs/api/rest/github-delete-repository.png)
+![](/pw2/imgs/api/rest/github-delete-repository.png)
 
 [GitHub - REST API - Delete a repository](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#delete-a-repository)
 

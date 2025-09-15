@@ -7,11 +7,11 @@ const classnoteOrder = (classnote: string) =>
   CONTENT_SLUGS.indexOf(classnote) + 1;
 
 const classroomEntries = await getCollection('classnotes', ({ slug }) =>
-  CONTENT_SLUGS.includes(slug)
+  CONTENT_SLUGS.includes(slug),
 );
 
 classroomEntries.sort(
-  (a, b) => classnoteOrder(a.slug) - classnoteOrder(b.slug)
+  (a, b) => classnoteOrder(a.slug) - classnoteOrder(b.slug),
 );
 ---
 
@@ -23,7 +23,7 @@ classroomEntries.sort(
     >
       {
         classroomEntries.map((entry) => (
-          <a href={`/ls/${entry.slug}`}>
+          <a href={`/pw2/${entry.slug}`}>
             <div class="rounded border-gray-400 bg-white dark:bg-slate-800 dark:hover:bg-gray-700 dark:border-white/30 dark:border transition-all duration-300 p-4 overflow-hidden shadow-lg">
               <h1 class="font-semibold text-lg">
                 <span class="text-gray-400">#{classnoteOrder(entry.slug)}</span>{' '}
