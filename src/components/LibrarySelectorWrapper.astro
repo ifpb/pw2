@@ -1,0 +1,59 @@
+---
+import LibrarySelector from './LibrarySelector';
+
+interface Props {
+  fetchSrc?: string;
+  axiosSrc?: string;
+  supabaseSrc?: string;
+}
+
+const { fetchSrc, axiosSrc, supabaseSrc } = Astro.props;
+---
+
+<div class="library-selector-wrapper">
+  <LibrarySelector client:load />
+  <slot />
+</div>
+
+<style>
+  :global(.library-content-fetch) {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+  :global(.library-content-fetch.active) {
+    opacity: 1;
+    display: block;
+    pointer-events: auto;
+  }
+
+  :global(.library-content-axios) {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+  :global(.library-content-axios.active) {
+    opacity: 1;
+    display: block;
+    pointer-events: auto;
+  }
+
+  :global(.library-content-supabase) {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+  :global(.library-content-supabase.active) {
+    opacity: 1;
+    display: block;
+    pointer-events: auto;
+  }
+
+  :global(.library-content-fetch.active:first-child) {
+    opacity: 1;
+    display: block;
+  }
+</style>

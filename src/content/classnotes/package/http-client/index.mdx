@@ -1,0 +1,166 @@
+---
+title: Cliente HTTP em JavaScript
+---
+
+import CodeTree from '../../../../components/CodeTree.astro';
+import CodePreview from '../../../../components/CodePreview.astro';
+import LibrarySelectorWrapper from '../../../../components/LibrarySelectorWrapper.astro';
+
+# {frontmatter.title}
+
+## JavaScript HTTP Clients
+
+Existem várias formas de fazer requisições assíncronas em JavaScript. Veja as principais opções:
+
+### Fetch API
+
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) é a API nativa do navegador para requisições HTTP.
+
+**Vantagens:**
+- Nativa (sem dependências)
+- Sintaxe moderna com Promises
+- Suporta async/await
+
+**Desvantagens:**
+- Sem interceptadores
+- Sem cancelamento nativo (precisa AbortController)
+- Sem timeout
+
+### Axios
+
+[Axios](https://axios-http.com/) é uma biblioteca HTTP popular que funciona em navegador e Node.js.
+
+**Vantagens:**
+- Sintaxe simples e intuitiva
+- Interceptadores integrados
+- Suporta timeout e cancelamento
+- Funciona em navegador e Node.js
+
+**Desvantagens:**
+- É uma dependência adicional (~13KB)
+
+### Supabase Client
+
+[@supabase/supabase-js](https://supabase.com/docs/reference/javascript/introduction) é a biblioteca oficial do Supabase para JavaScript.
+
+**Vantagens:**
+- Integração direta com Supabase
+- Gerenciamento de autenticação automático
+- Type-safe com TypeScript
+- Realtime subscriptions
+
+**Desvantagens:**
+- Específico para Supabase
+- Curva de aprendizado maior
+
+## Invest-app (CRUD)
+
+Veja como implementar as operações CRUD (Create, Read, Update, Delete) com cada biblioteca:
+
+![](/pw2/imgs/w3c/fetch-api/invest-app-crud.png)
+
+- [Código Fonte Fetch](https://github.com/ifpb/pw2/tree/main/public/codes/w3c/fetch-api/invest-app/)
+- [Código Fonte Axios](https://github.com/ifpb/pw2/tree/main/public/codes/package/axios/invest-app/)
+- [Código Fonte Supabase Client](https://github.com/ifpb/pw2/tree/main/public/codes/package/supabase-client/invest-app/)
+
+<CodeTree src="/codes/w3c/fetch-api/invest-app/" />
+
+<CodePreview src="/codes/w3c/fetch-api/invest-app/.env.example" />
+
+### Create a investment
+
+![](/pw2/imgs/package/supabase-api/post-investment.png)
+
+<LibrarySelectorWrapper>
+  <div class="library-content-fetch active">
+    <CodePreview src="/codes/w3c/fetch-api/invest-api-doc/create.js" />
+  </div>
+  <div class="library-content-axios">
+    <CodePreview src="/codes/package/axios/invest-api-doc/create.js" />
+  </div>
+  <div class="library-content-supabase">
+    <CodePreview src="/codes/package/supabase-client/invest-api-doc/create.js" />
+  </div>
+</LibrarySelectorWrapper>
+
+```js
+import Storage from './services/storage.js';
+
+const investment = {
+  name: "Tesouro Selic 2029",
+  value: 10000,
+  origin: "Tesouro Direto",
+  category: "Pós",
+  interest: "100% Selic",
+  created_at: "2021-09-10T00:00:00-03:00",
+};
+
+Storage.create('investments', investment);
+```
+
+### Read investments
+
+![](/pw2/imgs/package/supabase-api/get-investments.png)
+
+<LibrarySelectorWrapper>
+  <div class="library-content-fetch active">
+    <CodePreview src="/codes/w3c/fetch-api/invest-api-doc/read.js" />
+  </div>
+  <div class="library-content-axios">
+    <CodePreview src="/codes/package/axios/invest-api-doc/read.js" />
+  </div>
+  <div class="library-content-supabase">
+    <CodePreview src="/codes/package/supabase-client/invest-api-doc/read.js" />
+  </div>
+</LibrarySelectorWrapper>
+
+```js
+import Storage from './services/storage.js';
+
+Storage.read('investments');
+Storage.read('investments', 1);
+```
+
+### Update a investment
+
+![](/pw2/imgs/package/supabase-api/patch-investment.png)
+
+<LibrarySelectorWrapper>
+  <div class="library-content-fetch active">
+    <CodePreview src="/codes/w3c/fetch-api/invest-api-doc/update.js" />
+  </div>
+  <div class="library-content-axios">
+    <CodePreview src="/codes/package/axios/invest-api-doc/update.js" />
+  </div>
+  <div class="library-content-supabase">
+    <CodePreview src="/codes/package/supabase-client/invest-api-doc/update.js" />
+  </div>
+</LibrarySelectorWrapper>
+
+```js
+import Storage from './services/storage.js';
+
+Storage.update('investments', 1, { value: 15000 });
+```
+
+### Delete a investment
+
+![](/pw2/imgs/package/supabase-api/delete-investment.png)
+
+<LibrarySelectorWrapper>
+  <div class="library-content-fetch active">
+    <CodePreview src="/codes/w3c/fetch-api/invest-api-doc/delete.js" />
+  </div>
+  <div class="library-content-axios">
+    <CodePreview src="/codes/package/axios/invest-api-doc/delete.js" />
+  </div>
+  <div class="library-content-supabase">
+    <CodePreview src="/codes/package/supabase-client/invest-api-doc/delete.js" />
+  </div>
+</LibrarySelectorWrapper>
+
+```js
+import Storage from './services/storage.js';
+
+Storage.remove('investments', 1);
+```
