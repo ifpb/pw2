@@ -1,5 +1,5 @@
 ---
-title: Cliente HTTP em JavaScript
+title: Consumo do Supabase
 ---
 
 import CodeTree from '../../../../components/CodeTree.astro';
@@ -52,6 +52,66 @@ Existem várias formas de fazer requisições assíncronas em JavaScript. Veja a
 **Desvantagens:**
 - Específico para Supabase
 - Curva de aprendizado maior
+
+## Demonstração
+
+<LibrarySelectorWrapper>
+  <div class="library-content-fetch active">
+    Fetch API
+
+    ```js
+    fetch(resource)
+    fetch(resource, options)
+    ```
+
+    Exemplo
+
+    <CodePreview src="/codes/w3c/fetch-api/via-cep/index.js" />
+
+    [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
+    - Access-Control-Allow-Origin
+    - Access-Control-Allow-Methods
+    - Access-Control-Allow-Headers
+    - Access-Control-Allow-Credentials
+    - Access-Control-Max-Age
+
+    O [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) é uma alternativa ao [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+  </div>
+  <div class="library-content-axios">
+    Axios Library: [axios](https://axios-http.com/)
+
+    ```bash
+    $ npm install axios
+    ```
+
+    <CodePreview src="/codes/package/axios/via-cep/index.js" />
+  </div>
+  <div class="library-content-supabase">
+    Supabase Client: [@supabase/supabase-js](https://supabase.com/docs/reference/javascript/introduction)
+
+    ```bash
+    $ npm install @supabase/supabase-js
+    ```
+
+    Exemplo:
+
+    ```js
+    import { createClient } from '@supabase/supabase-js';
+
+    const supabase = createClient(
+      'https://xyz.supabase.co',
+      'public-anon-key'
+    );
+
+    const { data, error } = await supabase
+      .from('investments')
+      .select();
+
+    console.log(data);
+    ```
+  </div>
+</LibrarySelectorWrapper>
 
 ## Invest-app (CRUD)
 
