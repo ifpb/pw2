@@ -3,6 +3,7 @@ title: Supabase API
 ---
 
 import CodePreview from '../../../../components/CodePreview.astro';
+import RestApiSelector from '../../../../components/RestApiSelector.astro';
 
 # {frontmatter.title}
 
@@ -85,37 +86,7 @@ Return
 
 <CodePreview src="/codes/package/supabase-api/.env.example" />
 
-```http
-# @host = https://xyz.supabase.co
-@host = {{$dotenv SUPABASE_URL}}
-@token = {{$dotenv SUPABASE_KEY}}
-
-### Create a investment
-# @name createInvestment
-POST {{host}}/rest/v1/investments
-apikey: {{token}}
-Authorization: Bearer {{token}}
-Content-Type: application/json
-Prefer: return=representation
-
-{
-  "name": "Tesouro Selic 2029",
-  "value": 10000,
-  "origin": "Tesouro Direto",
-  "category": "Pós",
-  "interest": "100% Selic"
-}
-```
-
-```bash
-$ SUPABASE_KEY=abc
-$ curl -X POST 'https://xyz.supabase.co/rest/v1/investments' \
-  -H "apikey: ${SUPABASE_KEY}" \
-  -H "Authorization: Bearer ${SUPABASE_KEY}" \
-  -H "Content-Type: application/json" \
-  -H "Prefer: return=representation" \
-  -d '{ "name": "Tesouro Selic 2029", "value": 10000, "origin": "Tesouro Nacional", "category": "Pós", "interest": "100% Selic" }'
-```
+<RestApiSelector restClientSrc="/codes/package/supabase-api/create-investment.http" curlSrc="/codes/package/supabase-api/create-investment.sh" />
 
 ### Read investments
 
@@ -123,22 +94,7 @@ $ curl -X POST 'https://xyz.supabase.co/rest/v1/investments' \
 
 [PostgREST - Table and Views - Read](https://postgrest.org/en/stable/references/api/tables_views.html#read)
 
-```http
-@host = {{$dotenv SUPABASE_URL}}
-@token = {{$dotenv SUPABASE_KEY}}
-
-### Read investments
-GET {{host}}/rest/v1/investments?select=*
-apikey: {{token}}
-Authorization: Bearer {{token}}
-```
-
-```bash
-$ SUPABASE_KEY=abc
-$ curl 'https://xyz.supabase.co/rest/v1/investments?select=*' \
-  -H "apikey: ${SUPABASE_KEY}" \
-  -H "Authorization: Bearer ${SUPABASE_KEY}"
-```
+<RestApiSelector restClientSrc="/codes/package/supabase-api/read-investments.http" curlSrc="/codes/package/supabase-api/read-investments.sh" />
 
 ### Read a investment
 
@@ -146,25 +102,7 @@ $ curl 'https://xyz.supabase.co/rest/v1/investments?select=*' \
 
 [PostgREST - Table and Views - Read](https://postgrest.org/en/stable/references/api/tables_views.html#read)
 
-```http
-@host = {{$dotenv SUPABASE_URL}}
-@token = {{$dotenv SUPABASE_KEY}}
-@createdInvestmentId = {{createInvestment.response.body.$[0].id}}
-
-### Read a investment
-GET {{host}}/rest/v1/investments?id=eq.{{createdInvestmentId}}
-apikey: {{token}}
-Authorization: Bearer {{token}}
-```
-
-```bash
-$ SUPABASE_KEY=abc
-$ curl 'https://xyz.supabase.co/rest/v1/investments?id=eq.1' \
-  -H "apikey: ${SUPABASE_KEY}" \
-  -H "Authorization: Bearer ${SUPABASE_KEY}"
-```
-
-
+<RestApiSelector restClientSrc="/codes/package/supabase-api/read-investment.http" curlSrc="/codes/package/supabase-api/read-investment.sh" />
 
 ### Update a investment
 
@@ -172,28 +110,7 @@ $ curl 'https://xyz.supabase.co/rest/v1/investments?id=eq.1' \
 
 [PostgREST - Table and Views - Update](https://postgrest.org/en/stable/references/api/tables_views.html#update)
 
-```http
-### Update a investment
-PATCH  {{host}}/rest/v1/investments?id=eq.{{createdInvestmentId}}
-apikey: {{token}}
-Authorization: Bearer {{token}}
-Content-Type: application/json
-Prefer: return=representation
-
-{
-  "value": 15000
-}
-```
-
-```bash
-$ SUPABASE_KEY=abc
-$ curl -X PATCH 'https://xyz.supabase.co/rest/v1/investments?some_column=eq.someValue' \
-  -H "apikey: ${SUPABASE_KEY}" \
-  -H "Authorization: Bearer ${SUPABASE_KEY}"\
-  -H "Content-Type: application/json" \
-  -H "Prefer: return=representation" \
-  -d '{ "value": 15000 }'
-```
+<RestApiSelector restClientSrc="/codes/package/supabase-api/update-investment.http" curlSrc="/codes/package/supabase-api/update-investment.sh" />
 
 ### Delete a investment
 
@@ -201,20 +118,4 @@ $ curl -X PATCH 'https://xyz.supabase.co/rest/v1/investments?some_column=eq.some
 
 [PostgREST - Table and Views - Delete](https://postgrest.org/en/stable/references/api/tables_views.html#delete)
 
-```http
-@host = {{$dotenv SUPABASE_URL}}
-@token = {{$dotenv SUPABASE_KEY}}
-@createdInvestmentId = {{createInvestment.response.body.$[0].id}}
-
-### Delete a investment
-DELETE {{host}}/rest/v1/investments?id=eq.{{createdInvestmentId}}
-apikey: {{token}}
-Authorization: Bearer {{token}}
-```
-
-```bash
-$ SUPABASE_KEY=abc
-$ curl -X DELETE 'https://xyz.supabase.co/rest/v1/investments?some_column=eq.someValue' \
-  -H "apikey: ${SUPABASE_KEY}" \
-  -H "Authorization: Bearer ${SUPABASE_KEY}"
-```
+<RestApiSelector restClientSrc="/codes/package/supabase-api/delete-investment.http" curlSrc="/codes/package/supabase-api/delete-investment.sh" />
