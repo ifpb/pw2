@@ -19,23 +19,7 @@ import RestApiSelector from '../../../../components/RestApiSelector.astro';
   - [public-api-lists/public-api-lists](https://github.com/public-api-lists/public-api-lists)
   - [n0shake/Public-APIs](https://github.com/n0shake/Public-APIs)
 
-## ViaCEP API
-
-[{'https://viacep.com.br/ws/58015430/json/'}](https://viacep.com.br/ws/58015430/json/):
-
-![](/imgs/api/rest/viacep-get.png)
-
-[Código Fonte](https://github.com/ifpb/pw2/tree/main/public/codes/api/rest/) (Requisição | [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)):
-
-<CodePreview src="/codes/api/rest/viacep.http" />
-
-[curl](https://curl.se/):
-
-```bash
-$ curl https://viacep.com.br/ws/58015430/json/
-```
-
-HTTP Clients:
+## HTTP Clients
 
 - GUI
   - [Postman](https://www.postman.com/) - Plataforma colaborativa com interface intuitiva
@@ -60,8 +44,57 @@ HTTP Clients:
   - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - API nativa do navegador para requisições HTTP
   - [Axios](https://axios-http.com/) - Cliente HTTP baseado em Promises para Node.js e navegador
 
-## Github REST API
+## HTTP Status
 
+[HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+  - Respostas de informação (100-199)
+  - Respostas de sucesso (200-299)
+  - Redirecionamentos (300-399)
+  - Erros do cliente (400-499)
+  - Erros do servidor (500-599)
+
+Exemplos de Códigos
+
+| Código | Nome                  | Significado                                                                  |
+| ------ | --------------------- | ---------------------------------------------------------------------------- |
+| `200`  | Ok                    | Solicitação gerada com sucesso                                               |
+| `201`  | Created               | Solicitação gerada com sucesso e novo recurso foi criado                     |
+| `204`  | No Content            | Solicitação gerada com sucesso e sem conteúdo para enviar                    |
+| `400`  | Bad Request           | Solicitação não compreendida por motivos de erro                             |
+| `401`  | Unauthorized          | Solicitação bloqueada sem credenciais de autenticação válidas                |
+| `404`  | Not Found             | O servidor não pode encontrar o recurso solicitado                           |
+| `500`  | Internal Server Error | O servidor encontrou uma situação com a qual não sabe lidar                  |
+
+## ViaCEP | REST API
+
+- [ViaCEP - Doc](https://viacep.com.br/)
+- Exemplos:
+  - [{'https://viacep.com.br/ws/58015430/json/'}](https://viacep.com.br/ws/58015430/json/)
+  - [{'https://viacep.com.br/ws/01001000/json/'}](https://viacep.com.br/ws/01001000/json/)
+  - [{'https://viacep.com.br/ws/58015430/xml/'}](https://viacep.com.br/ws/58015430/xml/)
+
+
+### Rotas
+
+[Código Fonte](https://github.com/ifpb/pw2/tree/main/public/codes/api/rest/)
+
+| Método | Caminho                                | Status | Resposta                                   |
+| ------ | -------------------------------------- | ------ | ------------------------------------------ |
+| GET    | `/ws/{cep}/json/`                      | `200`  | Retorna os dados do CEP em JSON            |
+| GET    | `/ws/{cep}/xml/`                       | `200`  | Retorna os dados do CEP em XML             |
+
+### Consultar CEP
+
+
+![](/imgs/api/rest/viacep-get.png)
+
+[ViaCEP - Consultar CEP:](https://viacep.com.br/):
+
+<RestApiSelector restClientSrc="/codes/api/rest/viacep.http" curlSrc="/codes/api/rest/viacep.sh" />
+
+## Github | REST API
+
+- [GitHub - REST API - Doc](https://docs.github.com/en/rest?apiVersion=2022-11-28)
 - Exemplos
   - [{'https://api.github.com/users/luizchaves'}](https://api.github.com/users/luizchaves)
   - [{'https://api.github.com/orgs/ifpb/repos'}](https://api.github.com/orgs/ifpb/repos)
@@ -73,39 +106,19 @@ HTTP Clients:
     - [Authenticating with a personal access token](https://docs.github.com/en/rest/overview/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token)
   - [Quickstart for GitHub REST API](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28)
     - [Getting started using curl](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28#getting-started-using-curl)
-- [GitHub - REST API - Doc](https://docs.github.com/en/rest?apiVersion=2022-11-28)
 
 ### Rotas
 
 [Código Fonte (Requisição | Rest Client)](https://github.com/ifpb/pw2/tree/main/public/codes/api/rest/)
 
-| Método | Caminho                                | Status | Resposta                              |
-| ------ | -------------------------------------- | ------ | --------------------------------------------- |
-| POST   | `/user/repos`                          | `201`  | Cria um novo repositório                      |
-| GET    | `/users/luizchaves/repos`              | `200`  | Retorna todos os repositórios                 |
-| GET    | `/users/luizchaves/repos?type=private` | `200`  | Retorna todos os repositórios privados        |
-| GET    | `/repos/luizchaves/pw2`                 | `200`  | Retorna o repositório com nome luizchaves/pw2  |
-| PATCH  | `/repos/luizchaves/pw2`                 | `200`  | Atualiza o repositório com nome luizchaves/pw2 |
-| DELETE | `/repos/luizchaves/pw2`                 | `204`  | Exclui o repositório com nome luizchaves/pw2   |
-
-[HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-  - Respostas de informação (100-199)
-  - Respostas de sucesso (200-299)
-  - Redirecionamentos (300-399)
-  - Erros do cliente (400-499)
-  - Erros do servidor (500-599)
-
-Exemplos de Códigos
-
-| Código | Nome                  | Significado                                                                     |
-| ------ | --------------------- | ------------------------------------------------------------------------------- |
-| `200`  | Ok                    | Solicitação gerada com sucesso                                                  |
-| `201`  | Created               | Solicitação gerada com sucesso e um novo recurso foi criado como resultado      |
-| `204`  | No Content            | Solicitação gerada com sucesso e não há conteúdo para ser enviado               |
-| `400`  | Bad Request           | Solicitação não compreendida por motivos de erro                                |
-| `401`  | Unauthorized          | Solicitação foi bloqueada porque não possui credenciais de autenticação válidas |
-| `404`  | Not Found             | O servidor não pode encontrar o recurso solicitado                              |
-| `500`  | Internal Server Error | O servidor encontrou uma situação com a qual não sabe lidar.                    |
+| Método | Caminho                                | Status | Resposta                                    |
+| ------ | -------------------------------------- | ------ | ------------------------------------------- |
+| POST   | `/user/repos`                          | `201`  | Cria um novo repositório                    |
+| GET    | `/users/luizchaves/repos`              | `200`  | Retorna todos os repositórios               |
+| GET    | `/users/luizchaves/repos?type=private` | `200`  | Retorna repositórios privados               |
+| GET    | `/repos/luizchaves/pw2`                | `200`  | Retorna o repositório luizchaves/pw2       |
+| PATCH  | `/repos/luizchaves/pw2`                | `200`  | Atualiza o repositório luizchaves/pw2      |
+| DELETE | `/repos/luizchaves/pw2`                | `204`  | Exclui o repositório luizchaves/pw2        |
 
 ### Create a repository
 
