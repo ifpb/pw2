@@ -1,0 +1,48 @@
+---
+import { toHast } from 'mdast-util-to-hast';
+import { toHtml } from 'hast-util-to-html';
+import { remark } from 'remark';
+import rehypePrettyCode from 'rehype-pretty-code';
+import { existsFile, readFile } from '../helpers/files';
+import { prettyCodeOptions } from '../../plugins/rehype-pretty-code-config';
+import ClientSelector from './ClientSelector';
+
+export interface Props {
+  restClientSrc?: string;
+  curlSrc?: string;
+  restClientContent?: string;
+  curlContent?: string;
+}
+
+export const getHTML = async (code: string, lang: string) => {
+  const markdown = `\`\`\`${lang}\n${code}\n\`\`\``;
+  const hAST = toHast(remark().parse(markdown), { allowDangerousHtml: true });
+  await rehypePrettyCode(prettyCodeOptions)(hAST);
+  return toHtml(hAST, { allowDangerousHtml: true });
+};
+
+const { restClientSrc, curlSrc, restClientContent, curlContent } = Astro.props;
+
+let restHTML = '';
+let curlHTML = '';
+
+if (restClientSrc && (await existsFile(restClientSrc))) {
+  const content = await readFile(restClientSrc);
+  restHTML = await getHTML(content, 'http');
+} else if (restClientContent) {
+  restHTML = await getHTML(restClientContent, 'http');
+}
+
+if (curlSrc && (await existsFile(curlSrc))) {
+  const content = await readFile(curlSrc);
+  curlHTML = await getHTML(content, 'bash');
+} else if (curlContent) {
+  curlHTML = await getHTML(curlContent, 'bash');
+}
+---
+
+<ClientSelector
+  client:load
+  restClientContent={restHTML}
+  curlContent={curlHTML}
+/>
