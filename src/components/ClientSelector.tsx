@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useStore } from '@nanostores/react';
-import { apiClientType } from '../stores/apiClientStore';
+import { restClientType } from '../stores/apiClientStore';
 
 interface ClientSelectorProps {
   restClientContent: string;
@@ -11,11 +11,11 @@ export default function ClientSelector({
   restClientContent,
   curlContent,
 }: ClientSelectorProps) {
-  const $apiClientType = useStore(apiClientType);
-  const selectedClient = $apiClientType || 'rest';
+  const $restClientType = useStore(restClientType);
+  const selectedClient = $restClientType || 'rest';
 
   const handleClientChange = (type: 'rest' | 'curl') => {
-    apiClientType.set(type);
+    restClientType.set(type);
   };
 
   return (

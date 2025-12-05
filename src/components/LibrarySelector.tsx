@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
-import { apiClientType } from '../stores/apiClientStore';
+import { libraryClientType } from '../stores/apiClientStore';
 
 type Library = 'fetch' | 'axios' | 'supabase';
 
@@ -10,7 +10,7 @@ interface LibrarySelectorProps {
 
 export default function LibrarySelector({ children }: LibrarySelectorProps) {
   const [mounted, setMounted] = useState(false);
-  const $library = useStore(apiClientType);
+  const $library = useStore(libraryClientType);
 
   useEffect(() => {
     setMounted(true);
@@ -61,7 +61,7 @@ export default function LibrarySelector({ children }: LibrarySelectorProps) {
   const currentLibrary = getLibraryType();
 
   const handleSelect = (lib: Library) => {
-    apiClientType.set(lib as any);
+    libraryClientType.set(lib as any);
   };
 
   const isActive = (lib: Library) => currentLibrary === lib;
