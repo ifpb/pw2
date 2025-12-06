@@ -7,11 +7,13 @@ import RestApiSelector from '../../../../components/RestApiSelector.astro';
 
 # {frontmatter.title}
 
-- Tipo de Web API
+- Protocolos de API
   - Simple Object Access Protocol (SOAP)
   - Representational State Transfer (REST)
   - GraphQL
   - Google Remote Procedure Call (gRPC)
+  - WebSockets
+  - [Outros](https://bytebytego.com/guides/the-evolving-landscape-of-api-protocols-in-2023/)
 
 - Exemplos de Web API
   - [ViaCEP](https://viacep.com.br/)
@@ -23,7 +25,11 @@ import RestApiSelector from '../../../../components/RestApiSelector.astro';
   - [public-api-lists/public-api-lists](https://github.com/public-api-lists/public-api-lists)
   - [n0shake/Public-APIs](https://github.com/n0shake/Public-APIs)
 
-## HTTP Clients
+## Arquitetura REST
+
+![](/imgs/api/rest/api-rest.png)
+
+### HTTP Clients
 
 - GUI
   - [Postman](https://www.postman.com/) - Plataforma colaborativa com interface intuitiva
@@ -48,16 +54,18 @@ import RestApiSelector from '../../../../components/RestApiSelector.astro';
   - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - API nativa do navegador para requisições HTTP
   - [Axios](https://axios-http.com/) - Cliente HTTP baseado em Promises para Node.js e navegador
 
-## HTTP Status
+### HTTP Status Code
 
-[HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+Os códigos de status HTTP são códigos numéricos retornados pelo servidor para indicar o resultado de uma solicitação HTTP. Eles são divididos em cinco categorias principais:
+
   - Respostas de informação (100-199)
   - Respostas de sucesso (200-299)
   - Redirecionamentos (300-399)
   - Erros do cliente (400-499)
   - Erros do servidor (500-599)
 
-Exemplos de Códigos
+[Exemplos de Códigos](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
 
 | Código | Nome                  | Significado                                                                  |
 | ------ | --------------------- | ---------------------------------------------------------------------------- |
