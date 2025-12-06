@@ -7,7 +7,7 @@ export const prettyCodeOptions = {
     light: 'github-light',
   },
   keepBackground: true,
-  onVisitLine(node) {
+  onVisitLine(node, lineIndex, lines) {
     if (node.children.length === 0) {
       node.children = [{ type: 'text', value: ' ' }];
     }

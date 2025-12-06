@@ -7,12 +7,18 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { prettyCodeOptions } from './plugins/rehype-pretty-code-config';
 import { rehypeAutolinkHeadingsOptions } from './plugins/rehype-autolink-headings-config';
+import { remarkProcessShowLineNumbers } from './plugins/remark-process-show-line-numbers';
+import { rehypeAddLineNumbers } from './plugins/rehype-add-line-numbers';
 
 const markdownConfig = {
+  remarkPlugins: [
+    remarkProcessShowLineNumbers,
+  ],
   rehypePlugins: [
     rehypeSlug,
     [rehypeAutolinkHeadings, rehypeAutolinkHeadingsOptions],
     [rehypePrettyCode, prettyCodeOptions],
+    rehypeAddLineNumbers,
   ],
   syntaxHighlight: false,
 };
