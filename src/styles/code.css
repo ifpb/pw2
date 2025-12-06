@@ -35,6 +35,11 @@ div[data-rehype-pretty-code-fragment],
   @apply mb-8;
 }
 
+.client-selector
+div[data-rehype-pretty-code-fragment] {
+  @apply mb-0;
+}
+
 div[data-rehype-pretty-code-fragment] [data-rehype-pretty-code-title] {
   @apply px-6 py-2 rounded-t border-b;
 }

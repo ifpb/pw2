@@ -61,7 +61,7 @@ export default function ClientSelector({
         </button>
       </div>
 
-      <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+      <div className="client-selector rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
         {selectedClient === 'rest' && (
           <div
             className="prose dark:prose-invert max-w-none"
