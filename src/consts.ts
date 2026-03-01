@@ -1,17 +1,17 @@
 // subject data
 export const SUBJECT = {
   CLASSROOM_URLS: {
-    A: 'https://classroom.google.com/c/ODAzMTY4NjEwODA2',
+    A: 'https://classroom.google.com/c/ODQ3MDU3NzUzMzY5',
     B: 'https://classroom.google.com/c/Njk4NzMyNjg1NzE3',
   },
-  CHAT_URL: 'https://mail.google.com/mail/u/0/#chat/space/AAQA-_0jGBI',
+  CHAT_URL: 'https://mail.google.com/mail/u/0/#chat/space/AAQAlUbqSCM',
   PROJECTS_URL: {
-    padlet: 'https://padlet.com/lucachaves/projetopw220252',
-    github: 'https://ifpb.github.io/projects/codes/pw2/1',
+    padlet: 'https://padlet.com/lucachaves/projetopw220261',
+    github: 'https://ifpb.github.io/projects/codes/pw2-csbes-jp/1',
   },
   GITHUB_URLS: {
-    A: 'https://github.com/luizchaves/pw2-2025-2',
-    B: 'https://github.com/franciscodnn/pw2-2025-2',
+    A: 'https://github.com/luizchaves/pw2-2026-1',
+    B: 'https://github.com/franciscodnn/pw2-2026-1',
   },
   SCHEDULES: [
     {
