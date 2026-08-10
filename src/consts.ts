@@ -10,20 +10,20 @@ export const SUBJECT = {
     github: 'https://ifpb.github.io/projects/codes/pw2-csbes-jp/1',
   },
   GITHUB_URLS: {
-    A: 'https://github.com/luizchaves/pw2-2026-1',
-    B: 'https://github.com/franciscodnn/pw2-2026-1',
+    A: 'https://github.com/luizchaves/pw2-2026-2',
+    B: 'https://github.com/franciscodnn/pw2-2026-2',
   },
   SCHEDULES: [
     {
       className: 'A',
-      room: 'Lab 02',
+      room: 'Lab 09',
       day: 'Segunda',
       start: '15:50',
       end: '17:30',
     },
     {
       className: 'B',
-      room: 'Lab 01',
+      room: 'Lab 03',
       day: 'Segunda',
       start: '15:50',
       end: '17:30',
